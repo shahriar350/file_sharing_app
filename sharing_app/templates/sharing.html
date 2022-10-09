@@ -1,0 +1,25 @@
+{% extends 'master.html' %}
+{% load bootstrap5 %}
+{% block head %}
+    <title>File sharing app</title>
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-center w-100">
+        <div>
+            <h3>Upload your file for sharing</h3>
+            {% bootstrap_messages %}
+            {# Display a form #}
+            <form action="{% url 'sharing_view' %}" method="post" class="form" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">
+                        Submit
+                    </button>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
